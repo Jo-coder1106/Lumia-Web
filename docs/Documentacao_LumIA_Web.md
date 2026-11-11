@@ -181,9 +181,12 @@ Espera-se que o LumIA Web demonstre a construção de uma aplicação WEB integr
 Como evolução futura, o projeto poderá receber cadastro administrativo de usuários, anexos, filtros, relatórios, notificações e uma interface de programação de aplicações (API). Essas funcionalidades não fazem parte da versão inicial e não são necessárias para demonstrar o fluxo central proposto.
 
 
-## 12. Distribuição e execução do aplicativo Windows
+## 13. Distribuição e execução do aplicativo Windows
 
-Além da execução por meio do código-fonte, o projeto possui um pacote executável para Windows de 64 bits. A distribuição é criada pelo PyInstaller em modo *one-file*, que reúne o interpretador Python, as bibliotecas necessárias e os arquivos de interface em um único executável. A compilação é realizada em um ambiente Windows por meio do GitHub Actions, definido em `.github/workflows/build-windows-exe.yml`.
+Além da execução por meio do código-fonte, o projeto possui um pacote executável para Windows de 64 bits. A distribuição é criada pelo PyInstaller em modo *one-file*, que reúne o interpretador Python, as bibliotecas necessárias e os arquivos de interface em um único executável. A compilação é realizada em um ambiente Windows por meio do GitHub Actions, definido em `.github/workflows/build-windows-exe.yml`. O fluxo também executa um teste automatizado de inicialização do servidor local antes de publicar o pacote.
+
+
+A compilação e o teste automatizado foram concluídos com sucesso em 11 de novembro de 2026. O teste iniciou o executável no ambiente Windows de integração contínua e confirmou resposta HTTP 200 na rota `/login`. Nesse procedimento, a janela gráfica de seleção de navegador foi desativada, pois o teste não utiliza interação visual. Portanto, a seleção efetiva de navegador e o fluxo completo de professor e aluno ainda devem ser verificados manualmente no computador destinado à apresentação.
 
 ### 12.1 Seleção do navegador
 
