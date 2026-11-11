@@ -34,12 +34,8 @@ As contas são criadas apenas quando o banco de dados ainda não contém usuári
 - Consulta das entregas pelo professor.
 - Registro de nota de 0 a 10 e feedback.
 
-## Estrutura
-- `app.py`: rotas, autenticação, regras de negócio e inicialização do banco.
-- `templates/`: páginas HTML.
-- `static/style.css`: estilos da interface.
-- `requirements.txt`: dependências Python.
-- `docs/`: documentação acadêmica.
+## Documentação acadêmica
+A documentação do projeto está em [docs/Documentacao_LumIA_Web.md](docs/Documentacao_LumIA_Web.md).
 
 ## Equipe
 - José Diego dos Santos Pinheiro
