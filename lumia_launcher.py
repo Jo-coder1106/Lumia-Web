@@ -207,19 +207,21 @@ def main():
     print(f"Banco de dados: {APPLICATION_DIR / 'lumia.db'}", flush=True)
     print("=" * 58, flush=True)
 
-    def launch():
+    # O servidor roda em segundo plano para que a janela Tkinter seja aberta
+    # na thread principal, como recomendado para aplicações desktop Windows.
+    server_thread = threading.Thread(target=server.serve_forever, daemon=True)
+    server_thread.start()
+
+    try:
         should_open, browser_path = choose_browser()
         if should_open:
             open_browser(address, browser_path)
-
-    threading.Thread(target=launch, daemon=True).start()
-
-    try:
-        server.serve_forever()
+        server_thread.join()
     except KeyboardInterrupt:
-        print("\nEncerrando o LumIA Web...", flush=True)
+        print("\\nEncerrando o LumIA Web...", flush=True)
     finally:
         server.shutdown()
+        server_thread.join(timeout=5)
         server.server_close()
 
 
