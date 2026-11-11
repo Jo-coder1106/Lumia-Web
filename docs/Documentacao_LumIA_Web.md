@@ -162,6 +162,9 @@ Os testes abaixo constituem um roteiro de validação manual. Os resultados deve
 | CT05 | Aluno enviar resposta | Entrega aparece no painel do professor | A preencher |
 | CT06 | Professor registrar nota e feedback | Aluno visualiza nota e feedback | A preencher |
 | CT07 | Aluno tentar abrir rota exclusiva do professor | Acesso negado | A preencher |
+| CT08 | Atualizar resposta já enviada | Resposta atualizada e avaliação anterior removida | A preencher |
+| CT09 | Abrir o executável Windows e escolher um navegador | O sistema abre em endereço local e cria o banco SQLite | A preencher |
+| CT10 | Executar o teste automatizado do GitHub Actions e consultar /login | Executável inicia e /login responde HTTP 200 | Aprovado em 11 nov. 2026 |
 
 ## 11. Instalação e execução
 
@@ -188,17 +191,17 @@ Além da execução por meio do código-fonte, o projeto possui um pacote execut
 
 A compilação e o teste automatizado foram concluídos com sucesso em 11 de novembro de 2026. O teste iniciou o executável no ambiente Windows de integração contínua e confirmou resposta HTTP 200 na rota `/login`. Nesse procedimento, a janela gráfica de seleção de navegador foi desativada, pois o teste não utiliza interação visual. Portanto, a seleção efetiva de navegador e o fluxo completo de professor e aluno ainda devem ser verificados manualmente no computador destinado à apresentação.
 
-### 12.1 Seleção do navegador
+### 13.1 Seleção do navegador
 
 Ao iniciar `LumIA-Web.exe`, o inicializador apresenta uma janela para escolha do navegador. O programa procura instalações de Microsoft Edge, Google Chrome, Mozilla Firefox, Brave, Opera e Vivaldi por meio dos caminhos usuais do Windows e das entradas de registro do sistema. Somente navegadores cuja localização foi identificada são apresentados na lista. Também é oferecida a opção de utilizar o navegador padrão do Windows. A opção “Escolher depois” mantém o servidor em execução e permite que o usuário copie o endereço local exibido no terminal e o abra manualmente.
 
-### 12.2 Inicialização local e persistência
+### 13.2 Inicialização local e persistência
 
 O inicializador escolhe uma porta local disponível e inicia o servidor Flask vinculado ao endereço de loopback `127.0.0.1`. Após a seleção, o navegador escolhido é aberto no endereço informado pelo programa. O servidor não é publicado na rede local nem na internet.
 
 O banco SQLite é gravado no mesmo diretório de `LumIA-Web.exe` por meio da variável de ambiente `LUMIA_DATA_DIR`. O arquivo `lumia.db` é criado na primeira execução e armazena usuários, atividades, respostas, notas e feedbacks. Esse arquivo deve ser preservado ao atualizar o executável, pois contém os dados utilizados durante a demonstração.
 
-### 12.3 Procedimento de utilização
+### 13.3 Procedimento de utilização
 
 1. Baixar o artefato `LumIA-Web-Windows-x64.zip` na aba Actions do repositório.
 2. Extrair o pacote em uma pasta local com permissão de gravação.
