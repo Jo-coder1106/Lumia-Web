@@ -218,7 +218,7 @@ def main():
             open_browser(address, browser_path)
         server_thread.join()
     except KeyboardInterrupt:
-        print("\\nEncerrando o LumIA Web...", flush=True)
+        print("\nEncerrando o LumIA Web...", flush=True)
     finally:
         server.shutdown()
         server_thread.join(timeout=5)
