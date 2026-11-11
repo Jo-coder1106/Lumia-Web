@@ -101,7 +101,7 @@ def detect_browsers():
 def choose_browser():
     """Mostra ao usuário uma lista de navegadores detectados no Windows."""
     if os.environ.get("LUMIA_NO_BROWSER") == "1":
-        return None
+        return (False, None)
 
     try:
         import tkinter as tk
@@ -169,12 +169,12 @@ def choose_browser():
         root.mainloop()
 
         if result["confirmed"]:
-            return result["path"]
-        return None
+            return (True, result["path"])
+        return (False, None)
     except Exception as exc:
         # Em caso de ambiente sem interface gráfica, tenta o navegador padrão.
         print(f"Não foi possível abrir a janela de seleção do navegador: {exc}", flush=True)
-        return None
+        return (True, None)
 
 
 def open_browser(url, browser_path):
@@ -208,10 +208,9 @@ def main():
     print("=" * 58, flush=True)
 
     def launch():
-        browser_path = choose_browser()
-        if browser_path is None and os.environ.get("LUMIA_NO_BROWSER") == "1":
-            return
-        open_browser(address, browser_path)
+        should_open, browser_path = choose_browser()
+        if should_open:
+            open_browser(address, browser_path)
 
     threading.Thread(target=launch, daemon=True).start()
 
