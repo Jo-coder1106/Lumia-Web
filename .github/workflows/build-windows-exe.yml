@@ -82,6 +82,9 @@ jobs:
             if (-not $process.HasExited) {
               Stop-Process -Id $process.Id -Force
             }
+            if (Test-Path "dist/lumia.db") {
+              Remove-Item "dist/lumia.db" -Force
+            }
           }
 
       - name: Publish executable package
