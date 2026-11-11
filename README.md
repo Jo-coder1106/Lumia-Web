@@ -7,8 +7,9 @@ Sistema web acadêmico demonstrativo para gerenciamento de atividades e acompanh
 1. Baixe o artefato **LumIA-Web-Windows-x64.zip** na aba **Actions** do GitHub.
 2. Extraia o ZIP para uma pasta comum, por exemplo, Área de Trabalho\LumIA Web.
 3. Abra `LumIA-Web.exe` com duplo clique.
-4. O navegador será aberto automaticamente no endereço local exibido na janela.
-5. Para encerrar o servidor, feche a janela preta ou pressione Ctrl+C nela.
+4. Na janela inicial, escolha um navegador detectado (Edge, Chrome, Firefox, Brave, Opera ou Vivaldi, conforme instalado) ou o navegador padrão do Windows.
+5. Clique em **Abrir LumIA**. A opção **Escolher depois** deixa o servidor ativo e permite abrir manualmente o endereço local exibido no terminal.
+6. Para encerrar o servidor, feche a janela preta ou pressione Ctrl+C nela.
 
 O executável é destinado ao Windows 10/11 de 64 bits e inclui o Python e as dependências necessárias. Não requer instalação de Python.
 
