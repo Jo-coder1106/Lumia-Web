@@ -4,7 +4,7 @@ Sistema web acadêmico demonstrativo para gerenciamento de atividades e acompanh
 
 ## Executar no Windows sem instalar Python
 
-1. Baixe o artefato **LumIA-Web-Windows-x64.zip** na aba **Actions** do GitHub.
+1. Baixe a versão mais recente em [Releases: LumIA Web para Windows](https://github.com/Jo-coder1106/Lumia-Web/releases/latest). O arquivo é **LumIA-Web-Windows-x64.zip**.
 2. Extraia o ZIP para uma pasta comum, por exemplo, Área de Trabalho\LumIA Web.
 3. Abra `LumIA-Web.exe` com duplo clique.
 4. Na janela inicial, escolha um navegador detectado (Edge, Chrome, Firefox, Brave, Opera ou Vivaldi, conforme instalado) ou o navegador padrão do Windows.
