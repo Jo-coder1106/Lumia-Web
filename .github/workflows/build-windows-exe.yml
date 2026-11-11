@@ -1,0 +1,52 @@
+name: Build LumIA Web for Windows
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app.py"
+      - "lumia_launcher.py"
+      - "requirements.txt"
+      - "templates/**"
+      - "static/**"
+      - ".github/workflows/build-windows-exe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          architecture: "x64"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pyinstaller
+
+      - name: Check Python syntax
+        run: python -m compileall -q app.py lumia_launcher.py
+
+      - name: Build standalone Windows executable
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onefile --console --name "LumIA-Web" --add-data "templates;templates" --add-data "static;static" --collect-all flask --collect-all werkzeug --collect-all jinja2 --collect-all click --collect-all itsdangerous --collect-all markupsafe lumia_launcher.py
+          Copy-Item README-Windows.txt dist/LEIA-ME.txt
+
+      - name: Publish executable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: LumIA-Web-Windows-x64
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30
