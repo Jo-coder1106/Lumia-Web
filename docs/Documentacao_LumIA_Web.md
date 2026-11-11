@@ -180,6 +180,32 @@ Espera-se que o LumIA Web demonstre a construção de uma aplicação WEB integr
 
 Como evolução futura, o projeto poderá receber cadastro administrativo de usuários, anexos, filtros, relatórios, notificações e uma interface de programação de aplicações (API). Essas funcionalidades não fazem parte da versão inicial e não são necessárias para demonstrar o fluxo central proposto.
 
+
+## 12. Distribuição e execução do aplicativo Windows
+
+Além da execução por meio do código-fonte, o projeto possui um pacote executável para Windows de 64 bits. A distribuição é criada pelo PyInstaller em modo *one-file*, que reúne o interpretador Python, as bibliotecas necessárias e os arquivos de interface em um único executável. A compilação é realizada em um ambiente Windows por meio do GitHub Actions, definido em `.github/workflows/build-windows-exe.yml`.
+
+### 12.1 Seleção do navegador
+
+Ao iniciar `LumIA-Web.exe`, o inicializador apresenta uma janela para escolha do navegador. O programa procura instalações de Microsoft Edge, Google Chrome, Mozilla Firefox, Brave, Opera e Vivaldi por meio dos caminhos usuais do Windows e das entradas de registro do sistema. Somente navegadores cuja localização foi identificada são apresentados na lista. Também é oferecida a opção de utilizar o navegador padrão do Windows. A opção “Escolher depois” mantém o servidor em execução e permite que o usuário copie o endereço local exibido no terminal e o abra manualmente.
+
+### 12.2 Inicialização local e persistência
+
+O inicializador escolhe uma porta local disponível e inicia o servidor Flask vinculado ao endereço de loopback `127.0.0.1`. Após a seleção, o navegador escolhido é aberto no endereço informado pelo programa. O servidor não é publicado na rede local nem na internet.
+
+O banco SQLite é gravado no mesmo diretório de `LumIA-Web.exe` por meio da variável de ambiente `LUMIA_DATA_DIR`. O arquivo `lumia.db` é criado na primeira execução e armazena usuários, atividades, respostas, notas e feedbacks. Esse arquivo deve ser preservado ao atualizar o executável, pois contém os dados utilizados durante a demonstração.
+
+### 12.3 Procedimento de utilização
+
+1. Baixar o artefato `LumIA-Web-Windows-x64.zip` na aba Actions do repositório.
+2. Extrair o pacote em uma pasta local com permissão de gravação.
+3. Abrir `LumIA-Web.exe` com duplo clique.
+4. Escolher um navegador detectado ou o navegador padrão do Windows e selecionar “Abrir LumIA”.
+5. Acessar o sistema com as contas demonstrativas, quando o banco estiver em sua configuração inicial.
+6. Encerrar o servidor pela janela do terminal ou com Ctrl+C.
+
+O executável destina-se ao Windows 10 e Windows 11 de 64 bits. Não requer instalação de Python. A compilação não é compatível com macOS, Linux ou Windows de 32 bits; esses ambientes exigiriam pacotes específicos. A primeira utilização em cada computador deve ser verificada pelo grupo, inclusive a abertura do navegador escolhido e a persistência do banco de dados.
+
 ## Referências
 
 - FLASK. *Flask Documentation*. Disponível em: https://flask.palletsprojects.com/. Acesso em: 11 nov. 2026.
