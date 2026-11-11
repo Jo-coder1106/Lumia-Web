@@ -161,10 +161,10 @@ Os testes abaixo constituem um roteiro de validação manual. Os resultados deve
 | CT04 | Professor cadastrar atividade | Atividade aparece no painel | A preencher |
 | CT05 | Aluno enviar resposta | Entrega aparece no painel do professor | A preencher |
 | CT06 | Professor registrar nota e feedback | Aluno visualiza nota e feedback | A preencher |
-| CT07 | Aluno tentar abrir rota exclusiva do professor | Acesso negado | A preencher |
-| CT08 | Atualizar resposta já enviada | Resposta atualizada e avaliação anterior removida | A preencher |
-| CT09 | Abrir o executável Windows e escolher um navegador | O sistema abre em endereço local e cria o banco SQLite | A preencher |
-| CT10 | Executar o teste automatizado do GitHub Actions e consultar /login | Executável inicia e /login responde HTTP 200 | Aprovado em 11 nov. 2026 |
+| CT08 | Aluno tentar abrir rota exclusiva do professor | Acesso negado | A preencher |
+| CT09 | Atualizar resposta já enviada | Resposta atualizada e avaliação anterior removida | A preencher |
+| CT10 | Abrir o executável Windows e escolher um navegador | O sistema abre em endereço local e cria o banco SQLite | A preencher |
+| CT11 | Executar o teste automatizado do GitHub Actions e consultar /login | Executável inicia e /login responde HTTP 200 | Aprovado em 11 nov. 2026 |
 
 ## 11. Instalação e execução
 
