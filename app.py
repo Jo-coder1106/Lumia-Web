@@ -6,7 +6,9 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / 'lumia.db'
+DATA_DIR = Path(os.environ.get('LUMIA_DATA_DIR', str(BASE_DIR)))
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+DB_PATH = DATA_DIR / 'lumia.db'
 app = Flask(__name__)
 app.secret_key = os.environ.get('LUMIA_SECRET_KEY', 'lumia-web-chave-local-de-desenvolvimento')
 app.config.update(SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE='Lax')
