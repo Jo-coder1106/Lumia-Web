@@ -14,12 +14,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-windows:
     runs-on: windows-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -87,10 +87,32 @@ jobs:
             }
           }
 
-      - name: Publish executable package
+      - name: Package Windows download
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "dist/LumIA-Web.exe","dist/LEIA-ME.txt" -DestinationPath "LumIA-Web-Windows-x64.zip" -Force
+
+      - name: Publish workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: LumIA-Web-Windows-x64
-          path: dist/*
+          path: LumIA-Web-Windows-x64.zip
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "lumia-web-v1.0.${{ github.run_number }}"
+          name: "LumIA Web para Windows v1.0.${{ github.run_number }}"
+          body: |
+            Pacote executável do LumIA Web para Windows 10/11 de 64 bits.
+
+            - Não requer instalação de Python.
+            - Inclui o seletor de navegador.
+            - O banco lumia.db é criado ao lado do executável na primeira execução.
+            - Extraia o ZIP e execute LumIA-Web.exe.
+          files: LumIA-Web-Windows-x64.zip
+          draft: false
+          prerelease: false
+          make_latest: true
